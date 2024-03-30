@@ -7,60 +7,43 @@ def index (request):
     return  render(request,'Home/index.html')
 
 
-def about (request):
-    owner = {
+# def about (request):
+#     owner = {
 
-        "name":"kushal",
-        "age":24,
-        "salary":50_000
+#         "name":"kushal",
+#         "age":10,
+#         "salary":50_000
 
-    }
+#     }
 
-    general = {
-        "copyright":"2024",
-        "location":"Pokhara"
-    }
+#     general = {
+#         "copyright":"2024",
+#         "location":"Pokhara"
+#     }
 
-    context = {
-        "owner":owner,
-        "general":general
-    }
+#     context = {
+#         "owner":owner,
+#         "general":general
+#     }
 
-    return  render(request,'Home/about.html',context)
+#     return  render(request,'Home/about.html',context)
 
 
-def Months(request):
+
+# def months (request):
+
+#     months = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec']
+
+#     context = {
+#         "months":months
+#     }
     
 
-    janauary = {
-        "name":"jan",
-        "days":31,
-        "season":"winter"
-    }
-
-    April = {
-        "name":"apr",
-        "days":28,
-        "season":"summer"
-    }
-
-    march = {
-        "name":"mar",
-        "days":31,
-        "season":"spring"
-    }
 
 
+#     return  render(request,'Home/months.html',context)
 
 
-    context = {
-        "jan":janauary,
-        "apr":April,
-        "mar":march
-    }
-
-
-    return  render(request,'Home/months.html',context)
 
 
 
