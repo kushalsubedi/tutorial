@@ -1,50 +1,19 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from .models import Student
 
 
 def index (request):
-    return  render(request,'Home/index.html')
+
+    """
+    SELECT * FROM Student
+    """
+    students = Student.objects.all()
+    context = {
+        'students':students
+    }
 
 
-# def about (request):
-#     owner = {
-
-#         "name":"kushal",
-#         "age":10,
-#         "salary":50_000
-
-#     }
-
-#     general = {
-#         "copyright":"2024",
-#         "location":"Pokhara"
-#     }
-
-#     context = {
-#         "owner":owner,
-#         "general":general
-#     }
-
-#     return  render(request,'Home/about.html',context)
-
-
-
-# def months (request):
-
-#     months = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec']
-
-#     context = {
-#         "months":months
-#     }
-    
-
-
-
-#     return  render(request,'Home/months.html',context)
-
-
-
-
-
+    return  render(request,'Home/index.html',context)
 
