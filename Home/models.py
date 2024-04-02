@@ -10,7 +10,6 @@ class Student (models.Model):
    
     """
     CREATE TABLE Student name varchar(100),roll int,city varchar(100)
-  
     """
     def __str__(self):
         return self.name
