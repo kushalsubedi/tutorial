@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
 from .models import Student
@@ -39,10 +39,14 @@ def retrive_student(request,id):
 def add_student (request):
     form = StudentCreationForm()
     if request.method == 'POST':
-        form = StudentCreationForm(request.POST)
+        form = StudentCreationForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return HttpResponse("Student Added Successfully")
+            
+            return redirect('index')
+       
+        
+
     return render(request,'Home/add_student.html',{'form':form})
 
     
@@ -74,13 +78,13 @@ def update_student(request,id):
         form = UpdateStudentForm(request.POST,instance=student)
         if form.is_valid():
             form.save()
-            return HttpResponse("Student Updated Successfully")
-    return render(request,'Home/update.html',{'form':form})
+            return redirect('index')
+    else:
+        return render(request,'Home/update.html',{'form':form})
     
 def delete_student(request,id):
     student = Student.objects.get(pk=id)
     student.delete()
-    return HttpResponse("Student Deleted Successfully")
-
+    return redirect('index')
 
 # create new project that consist of groceries items and perform crud operation on it 

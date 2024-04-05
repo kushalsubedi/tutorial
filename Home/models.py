@@ -7,6 +7,7 @@ class Student (models.Model):
     name = models.CharField(max_length=100)
     roll = models.IntegerField(null=True, blank=True) 
     city = models.CharField(max_length=100)
+    img = models.ImageField(upload_to='static/image/', null=True, blank=True)
    
     """
     CREATE TABLE Student name varchar(100),roll int,city varchar(100)

@@ -1,26 +1,34 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Student</title>
-</head>
-<body>
-    <h2>Add Student and update </h2>
-    <form method="POST">
-        {% csrf_token %}
+{% extends 'base.html'%}
 
-    
-        <label for="name">Name:</label><br>
-        <input type="text" id="name" name='name'><br>
-        <label for="roll">Roll:</label><br>
-        <input type="text" id="roll" name="roll"><br>
-        <label for="city">City:</label><br>
-        <input type="text" id="city" name="city"><br><br> 
-{% comment %} 
-        {{form.as_p}} {% endcomment %}
-        <button type="submit">Submit</button>
+{% block content %}
+   
+<div class="container">
+    <h2>Add Student and Update</h2>
+
+   
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+  
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" name='name'>
+      </div>
+      <div class="form-group">
+        <label for="roll">Roll:</label>
+        <input type="text" class="form-control" id="roll" name="roll">
+      </div>
+      <div class="form-group">
+        <label for="city">City:</label>
+        <input type="text" class="form-control" id="city" name="city">
+      </div>
+      <div class="form-group">
+        <label for="image">Image:</label>
+        <input type="File" class="form-control" id="image" name="img">
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-</body>
-</html>
+  </div>
+
+ {% endblock %}

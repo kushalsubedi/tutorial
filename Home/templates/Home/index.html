@@ -1,39 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Student List</title>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
+{%extends 'base.html'%}
+{%load static%}
 
+{% block content %}
 <div class="container">
-  <h2>Student List</h2>
+  <h1 id ="heading">Student List</h1>
   <table class="table">
     <thead>
       <tr>
         <th>ID</th>
+        <th> Photo </th>
         <th>Name</th>
         <th>Roll</th>
         <th>City</th>
+        <th>Update</th>
+        <th> Delete </th>
       </tr>
     </thead>
     <tbody>
       {% for student in students %}
       <tr>
+        {% if student.img %}
+        <td> <img src="{{ student.img.url }}" width="50" height="50"> </td>
+       {%endif%}
         <td>{{ student.id }}</td>
         <td>{{ student.name }}</td>
         <td>{{ student.roll }}</td>
         <td>{{ student.city }}</td>
+
+        <td> <a href="{% url 'update' student.id %}">  update  </a> </td>
+
+        <td> <a href= "{%url 'delete' student.id %}" > Delete </a></td>
       </tr>
       {% endfor %}
     </tbody>
   </table>
 </div>
 
-<!-- Bootstrap JS (optional) -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+{% endblock %}
