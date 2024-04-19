@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<form nethod='POST'>
+<form method='POST'>
     {% csrf_token %}
     {{ form.as_p }}
     <button type='submit'> Register </button>
