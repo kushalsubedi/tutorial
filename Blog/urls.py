@@ -20,5 +20,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path ('',include('Home.urls'))
+    path ('',include('Home.urls')),
+    path('register/',include('Register.urls')),
 ]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
