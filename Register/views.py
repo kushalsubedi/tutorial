@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login,logout
 # Create your views here.
 from .forms import UserRegisterForm
 from django.contrib import messages
@@ -14,6 +14,7 @@ def register_user(request):
             form.save()
             print ("HEllo world")
             messages.success(request, f'Account created for {username}')
+            return redirect('login')
         else:
             print (form.errors)
     else:
@@ -33,3 +34,8 @@ def login_user(request):
         else:
             messages.info(request, 'Username or password is incorrect')
     return render(request, 'Register/login.html')
+
+
+def logout_user(request):
+    logout(request)
+    return redirect('login')
